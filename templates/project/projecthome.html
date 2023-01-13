@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block projectactive %} active {% endblock projectactive %}
+{% block body %}
+<!-- {% comment %} <link rel="stylesheet" href="{% static "work.css" %}"> {% endcomment %} -->
+<!-- Persian cat -->
+<div class="container-fluid p-0 col-12 d-flex" style="height: 300px; background-color: rgb(78, 75, 242);">
+    <!-- Carousel wrapper -->
+    <div class="col-6">
+        <h2 class="text-center text-white p-5">Project </h2>
+        <p class="text-center text-light">Here you will find some of the personal and clients projects that I created<br> with each project containing its own case study</p>
+    </div>
+    <div class="col-6">
+
+        <img style="height: 300px; width: 100%;" src="/static/img/png.png" alt="">
+
+
+    </div>
+</div>
+
+
+<div class="container-fluid p-5" style="background-color: #7f5aa2;">
+<div class="container mt-0" >
+    <section id="project" class="project">
+        {% comment %} {% block projactive %} active {% endblock projactive %} {% endcomment %}
+        {% for project in allpost %}
+
+        <div class="card flex-md-row mb-4 shadow-sm h-md-250 text-light rounded-top col-12 border" style="background-color: #453333;">
+            <div class="card-body d-flex flex-column align-items-start text-white col-10">
+                <strong class="d-inline-block mb-2 text-light">{{project.bag}}</strong>
+                <h3 class="mb-0">
+                    <a class="text-white" href="#">{{project.title}}</a>
+                </h3>
+                <div class="mb-1 text-muted">{{project.timesp}}</div>
+                <p class="card-text mb-auto">{{project.content|safe | truncatechars:100}}</p>
+                <a class="btn btn-success mt-3 rounded-pill" href="/project/{{project.slug}}">Continue reading</a>
+            </div>
+            <div class="col-4">
+                <img src="{{ project.img.url }}" alt="" class="rounded" style="width: 100%; height: 250px;">
+            </div>
+        </div>
+        {% endfor %}
+
+
+
+    </section>
+
+</div>
+</div>
+
+
+{% endblock body %}
